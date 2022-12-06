@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Thumbnail Grabber</title>
   </head>
-  <body>
+  <body style="text-align: center;">
     <h2>&#11107;&nbsp;Place YT link in the Below Box&nbsp;&#11107;</h2>
-    <input></input>
+    <input id="l" style="width: 90vw; font-size: 3vw; outline: none;" placeholder="YOUTUBE LINK"></input>
+    <br>
+    <br>
+    <button style="width: 90vw; height: 3vw;" id="b"></button>
+    <script>
+      document.getElementById("b").addEventListener("click", click);
+      function click() {
+        let t = false;
+        let ctx = [];
+        const l = document.getElementById("l").value.split("");
+        for (let i = 0; i<l.length; i++) {
+          if (t) {
+            ctx.push(l[i]);
+          }
+          if (l[i] == "=") {
+            t = true;
+          }
+        }
+        const c = ctx.join("");
+        const ct = "<img src='https://img.youtube.com/vi/" + c + "/maxresdefault.jpg'></img>";
+        console.log(ct);
+        document.body.innerHTML = document.body.innerHTML + ct;
+      }
+    </script>
   </body>
 </html>
